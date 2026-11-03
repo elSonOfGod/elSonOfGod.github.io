@@ -1,0 +1,479 @@
+<title>Portofolio Mikael Putrawan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: satu kolom lebar, bagian project berupa baris dengan bukti (screenshot) sebesar mungkin.
+   Warna: abu dingin + tinta biru gelap, aksen hijau teal, kuning kunyit hanya untuk penanda kecil. */
+:root {
+  --bg: #f2f5f6;
+  --surface: #ffffff;
+  --fg: #0f1b24;
+  --muted: #566672;
+  --line: #d6dee2;
+  --accent: #0a6b5c;
+  --accent-soft: #dff1ec;
+  --mark: #e0a100;
+  --bad: #b83a3a;
+  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Instrument Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1418; --surface: #141d23; --fg: #e5edf0; --muted: #93a5af; --line: #26343c;
+    --accent: #45c4ab; --accent-soft: #14312c; --mark: #f0b429; --bad: #ee8080;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1418; --surface: #141d23; --fg: #e5edf0; --muted: #93a5af; --line: #26343c;
+  --accent: #45c4ab; --accent-soft: #14312c; --mark: #f0b429; --bad: #ee8080;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; }
+.mono { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.08; }
+
+/* nav */
+nav.top { display: flex; gap: 20px; align-items: center; justify-content: space-between; padding: 20px 0; flex-wrap: wrap; }
+nav.top .brand { font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+nav.top ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+nav.top a { color: var(--fg); text-decoration: none; font-size: 14.5px; font-weight: 500; }
+nav.top a:hover { color: var(--accent); }
+
+/* hero */
+.hero { padding: 56px 0 48px; border-bottom: 1px solid var(--line); }
+.hero .mono { margin-bottom: 18px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--mark); display: inline-block; }
+.hero h1 { font-size: clamp(38px, 7.4vw, 88px); font-weight: 800; letter-spacing: -.02em; max-width: 14ch; }
+.hero p.lead { font-size: clamp(17px, 2.2vw, 21px); max-width: 60ch; margin: 24px 0 0; color: var(--muted); }
+.hero p.lead strong { color: var(--fg); font-weight: 600; }
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 44px; border-top: 1px solid var(--line); }
+.facts div { padding: 18px 20px 0 0; min-width: 0; }
+.facts b { display: block; font-family: var(--font-display); font-size: clamp(26px, 3.6vw, 40px); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.facts span { font-size: 13.5px; color: var(--muted); }
+@media (max-width: 640px) { .facts { grid-template-columns: repeat(2, 1fr); } .facts div { padding-bottom: 16px; } }
+
+/* sections */
+section { padding: 72px 0 8px; }
+.sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+.sec-head h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; }
+
+.project { padding: 40px 0 56px; border-bottom: 1px solid var(--line); }
+.project:last-of-type { border-bottom: 0; }
+.p-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px 56px; align-items: start; }
+@media (max-width: 860px) { .p-head { grid-template-columns: minmax(0, 1fr); } }
+.tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.tag { font-family: var(--font-mono); font-size: 12px; padding: 3px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--surface); }
+.tag.live { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+.project h3 { font-size: clamp(26px, 3.4vw, 40px); font-weight: 700; letter-spacing: -.01em; }
+.project .sub { color: var(--muted); margin: 10px 0 0; max-width: 56ch; }
+dl.spec { margin: 0; display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 0; border-top: 1px solid var(--line); }
+dl.spec dt, dl.spec dd { padding: 11px 0; border-bottom: 1px solid var(--line); margin: 0; font-size: 15px; }
+dl.spec dt { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding-top: 14px; }
+
+.btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.btn { display: inline-block; font-weight: 600; font-size: 14.5px; padding: 9px 16px; border-radius: 8px; text-decoration: none; border: 1px solid var(--fg); color: var(--fg); background: transparent; }
+.btn:hover { background: var(--fg); color: var(--bg); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+:root[data-theme="dark"] .btn.primary { color: #06201b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #06201b; } }
+.btn.primary:hover { filter: brightness(1.1); background: var(--accent); color: #fff; }
+
+/* gallery (Warung JWP) */
+.gallery { margin-top: 36px; }
+.tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: thin; }
+.tabs button { font: inherit; font-size: 13.5px; font-weight: 500; white-space: nowrap; padding: 7px 13px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.shot { margin: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface); }
+.shot .bar { display: flex; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--bg); }
+.shot .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); display: block; }
+.shot img { display: block; width: 100%; height: auto; background: #fff; }
+.shot figcaption { padding: 14px 16px; font-size: 14.5px; color: var(--muted); border-top: 1px solid var(--line); }
+.shot figcaption b { color: var(--fg); font-weight: 600; }
+.gal-wrap { max-height: 640px; overflow-y: auto; background: #fff; }
+
+.cols2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
+@media (max-width: 760px) { .cols2 { grid-template-columns: minmax(0, 1fr); } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; min-width: 0; }
+.card h4 { margin: 0 0 10px; font-family: var(--font-display); font-size: 18px; }
+.card ul { margin: 0; padding-left: 18px; }
+.card li { margin: 4px 0; font-size: 15px; }
+
+/* ABSA */
+.pipeline { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; counter-reset: step; border-top: 2px solid var(--fg); }
+.pipeline li { padding: 14px 14px 0 0; font-size: 13.5px; color: var(--muted); counter-increment: step; }
+.pipeline li::before { content: counter(step); display: block; font-family: var(--font-mono); font-size: 12px; color: var(--accent); margin-bottom: 4px; }
+.pipeline li b { display: block; color: var(--fg); font-size: 15px; font-weight: 600; line-height: 1.3; margin-bottom: 3px; }
+@media (max-width: 860px) { .pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 18px; } }
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+@media (max-width: 700px) { .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.metric { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; background: var(--surface); }
+.metric.hi { border-color: var(--accent); background: var(--accent-soft); }
+.metric b { font-family: var(--font-display); font-size: clamp(26px, 3vw, 36px); font-weight: 700; display: block; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.metric span { font-size: 13px; color: var(--muted); }
+.bars { display: grid; gap: 9px; margin-top: 6px; }
+.bar-row { display: grid; grid-template-columns: 150px minmax(0, 1fr) 56px; gap: 12px; align-items: center; font-size: 14px; }
+.bar-row .track { height: 14px; background: var(--bg); border-radius: 3px; overflow: hidden; border: 1px solid var(--line); }
+.bar-row .fill { height: 100%; background: var(--accent); }
+.bar-row .n { text-align: right; font-family: var(--font-mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.bar-row.sel .fill { background: var(--bad); }
+@media (max-width: 520px) { .bar-row { grid-template-columns: 110px minmax(0, 1fr) 46px; gap: 8px; font-size: 13px; } }
+.stack { display: flex; height: 26px; border-radius: 4px; overflow: hidden; margin: 12px 0 8px; border: 1px solid var(--line); }
+.stack i { display: block; height: 100%; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13.5px; color: var(--muted); }
+.legend span::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; background: var(--c); }
+.imgs { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px; margin-top: 24px; align-items: start; }
+@media (max-width: 760px) { .imgs { grid-template-columns: minmax(0, 1fr); } }
+.imgs .shot img { background: #fff; }
+
+/* GKII */
+.site-card { margin-top: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+@media (max-width: 760px) { .site-card { grid-template-columns: minmax(0, 1fr); } }
+.url-box { border: 1px dashed var(--accent); border-radius: 10px; padding: 24px; background: var(--accent-soft); display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+.url-box .u { font-family: var(--font-mono); font-size: clamp(15px, 2.4vw, 20px); word-break: break-all; font-weight: 500; }
+
+/* Kicau */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
+@media (max-width: 760px) { .pair { grid-template-columns: minmax(0, 1fr); } }
+.pair .shot img { background: #000; }
+.pose { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; margin-top: 22px; }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; margin-top: 20px; }
+@media (max-width: 760px) { .skills { grid-template-columns: minmax(0, 1fr); } }
+.skill { padding: 18px 0; border-top: 1px solid var(--line); }
+.skill h4 { margin: 0 0 4px; font-family: var(--font-display); font-size: 19px; }
+.skill p { margin: 0; color: var(--muted); font-size: 15px; }
+.stack-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
+
+/* contact */
+.contact { margin-top: 56px; padding: 44px 0 56px; border-top: 2px solid var(--fg); }
+.contact h2 { font-size: clamp(30px, 5vw, 56px); font-weight: 800; letter-spacing: -.02em; max-width: 18ch; }
+.clist { margin-top: 28px; display: grid; gap: 0; max-width: 680px; }
+.crow { display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 13px 0; border-top: 1px solid var(--line); }
+.crow:last-child { border-bottom: 1px solid var(--line); }
+.crow .v { font-family: var(--font-mono); font-size: 14px; word-break: break-all; }
+.crow button { font: inherit; font-size: 12.5px; padding: 5px 11px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--fg); cursor: pointer; }
+footer { padding: 0 0 36px; font-size: 13px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+  <nav class="top" aria-label="Navigasi utama">
+    <span class="brand">Mikael P. Situmorang</span>
+    <ul>
+      <li><a href="#project">Project</a></li>
+      <li><a href="#kemampuan">Kemampuan</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="mono"><span class="dot"></span> Sistem Informasi · Universitas Gunadarma</div>
+    <h1>Mikael Putrawan Situmorang</h1>
+    <p class="lead">Lulusan Sistem Informasi yang merancang, membangun, menguji, dan mendokumentasikan <strong>sistem berbasis web</strong>, lalu mengolah data menjadi <strong>laporan dan insight</strong>.</p>
+    <div class="facts">
+      <div><b>3,72</b><span>IPK dari skala 4,00</span></div>
+      <div><b>4</b><span>project di portofolio ini</span></div>
+      <div><b>1</b><span>website operasional yang sudah live</span></div>
+      <div><b>86,18%</b><span>akurasi model pada skripsi</span></div>
+    </div>
+  </header>
+
+  <section id="project">
+    <div class="sec-head">
+      <h2>Project</h2>
+      <span class="mono">Diurutkan dari yang terbaru</span>
+    </div>
+
+    <!-- 1. Warung JWP -->
+    <article class="project" id="warung-jwp">
+      <div class="p-head">
+        <div>
+          <div class="tag-row"><span class="tag">2026</span><span class="tag">Sertifikasi Junior Web Programmer</span></div>
+          <h3>Warung JWP: inventori toko sembako</h3>
+          <p class="sub">Toko sembako perlu mencatat stok dan transaksi barang serta memantau persediaan tanpa catatan manual. Aplikasi ini mengelola stok, mencatat barang masuk dan keluar, lalu menyajikan dashboard dan laporan.</p>
+          <div class="btns">
+            <a class="btn" href="https://github.com/elSonOfGod" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <dl class="spec">
+          <dt>Teknologi</dt><dd>Laravel 13, MySQL, Bootstrap 5, Chart.js, Blade</dd>
+          <dt>Peran</dt><dd>Pengguna Admin dan Pimpinan dengan hak akses berbeda</dd>
+          <dt>Database</dt><dd>4 tabel utama: categories, products, stock_transactions, users</dd>
+          <dt>Data</dt><dd>22 barang, 10 kategori, 27 transaksi</dd>
+        </dl>
+      </div>
+
+      <div class="gallery" aria-label="Galeri tampilan Warung JWP">
+        <div class="tabs" role="tablist" id="gtabs"></div>
+        <figure class="shot">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="gal-wrap"><img id="gimg" src="img/jwp-dashboard.jpg" alt="Dashboard Warung JWP dengan grafik pergerakan stok" width="1200" height="874"></div>
+          <figcaption id="gcap"><b>Dashboard.</b> Ringkasan total barang dan kategori, grafik pergerakan stok, 5 stok tertinggi, peringatan stok kritis, dan transaksi terbaru.</figcaption>
+        </figure>
+      </div>
+
+      <div class="cols2">
+        <div class="card">
+          <h4>Fitur untuk Admin</h4>
+          <ul>
+            <li>Login dan logout, ubah profil dan password</li>
+            <li>CRUD kategori dan daftar barang</li>
+            <li>Transaksi barang masuk menambah stok otomatis</li>
+            <li>Transaksi barang keluar mengurangi stok otomatis</li>
+            <li>Sistem menolak barang keluar yang melebihi stok</li>
+            <li>Laporan transaksi dengan filter tanggal dan jenis, bisa dicetak</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Fitur untuk Pimpinan</h4>
+          <ul>
+            <li>Melihat dashboard: grafik stok, 5 stok terendah dan tertinggi</li>
+            <li>Membaca dan mencetak laporan transaksi</li>
+            <li>Menu Master Data dan Transaksi tidak tersedia untuk role ini</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. GKII -->
+    <article class="project" id="gkii">
+      <div class="p-head">
+        <div>
+          <div class="tag-row"><span class="tag">2025</span><span class="tag">Penulisan Ilmiah, nilai A</span><span class="tag live">Live</span></div>
+          <h3>Website Gereja Kemenangan Iman Indonesia, Cabang Tangerang</h3>
+          <p class="sub">Gereja belum punya media resmi berbasis web yang memudahkan jemaat dan masyarakat umum mengakses informasi. Website ini menyajikan profil gereja dan jadwal ibadah, serta pendaftaran jemaat dan form persembahan online.</p>
+          <div class="btns">
+            <a class="btn primary" href="https://gkiitangerang.my.id/" target="_blank" rel="noopener">Buka website</a>
+          </div>
+        </div>
+        <dl class="spec">
+          <dt>Metode</dt><dd>Rapid Application Development (RAD)</dd>
+          <dt>Teknologi</dt><dd>Laravel, MySQL, HTML, CSS, Bootstrap</dd>
+          <dt>Pengujian</dt><dd>Black box testing dan uji coba di beberapa perangkat. Seluruh fitur berjalan dengan baik.</dd>
+          <dt>Fitur</dt><dd>Profil gereja, jadwal ibadah, pendaftaran jemaat, persembahan online</dd>
+        </dl>
+      </div>
+      <div class="site-card">
+        <div class="url-box">
+          <span class="mono">Sudah dipakai di internet</span>
+          <span class="u">gkiitangerang.my.id</span>
+          <span style="color:var(--muted);font-size:14.5px">Buka langsung untuk melihat beranda, jadwal ibadah, dan form yang tersedia.</span>
+        </div>
+        <div class="card">
+          <h4>Yang dikerjakan</h4>
+          <ul>
+            <li>Analisis kebutuhan jemaat dan pengurus</li>
+            <li>Perancangan basis data</li>
+            <li>Pengembangan back-end Laravel dan antarmuka Bootstrap</li>
+            <li>Pengujian fungsional dan uji responsif di beberapa perangkat</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. Skripsi -->
+    <article class="project" id="skripsi">
+      <div class="p-head">
+        <div>
+          <div class="tag-row"><span class="tag">2026</span><span class="tag">Skripsi Sistem Informasi</span></div>
+          <h3>Analisis sentimen berbasis aspek ulasan aplikasi ChatGPT dengan IndoBERT</h3>
+          <p class="sub">Rating saja tidak menunjukkan aspek layanan mana yang menjadi sumber kepuasan atau keluhan pengguna. Penelitian ini memecah ulasan berbahasa Indonesia menjadi enam aspek, lalu mengklasifikasi sentimen tiap aspek.</p>
+          <div class="btns">
+            <a class="btn" href="https://github.com/elSonOfGod" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <dl class="spec">
+          <dt>Teknologi</dt><dd>Python, IndoBERT, Stanza (POS tagging), google-play-scraper</dd>
+          <dt>Data</dt><dd>20.000 ulasan Google Play Store, menjadi 12.004 ulasan bersih</dd>
+          <dt>Aspek</dt><dd>Performa dan Stabilitas, Kualitas Jawaban, UI/UX, Fitur dan Fungsionalitas, Harga dan Berlangganan, Umum</dd>
+          <dt>Pelabelan</dt><dd>Hybrid: label rating divalidasi InSet Lexicon dan penanganan negasi Fixed Window Length</dd>
+        </dl>
+      </div>
+
+      <ol class="pipeline">
+        <li><b>Scraping</b>20.000 ulasan berbahasa Indonesia</li>
+        <li><b>Preprocessing</b>6 tahap sampai WordPiece</li>
+        <li><b>Aspek</b>485 kata kunci dari POS tagging</li>
+        <li><b>Sentimen</b>Rating, InSet, cek mismatch</li>
+        <li><b>Pelatihan</b>IndoBERT, class-weighted loss</li>
+        <li><b>Evaluasi</b>3 skema, terbaik 80:10:10</li>
+      </ol>
+
+      <div class="metrics">
+        <div class="metric hi"><b>86,18%</b><span>Accuracy</span></div>
+        <div class="metric"><b>60,02%</b><span>F1-score macro</span></div>
+        <div class="metric"><b>58,43%</b><span>Precision macro</span></div>
+        <div class="metric"><b>62,13%</b><span>Recall macro</span></div>
+      </div>
+      <p class="mono" style="margin-top:10px">Diuji pada 1.201 data uji · Aspek terbaik: Kualitas Jawaban 92,14% · Terendah: Harga dan Berlangganan 67,39%</p>
+
+      <div class="cols2">
+        <div class="card">
+          <h4>Jumlah ulasan per aspek</h4>
+          <div class="bars" id="aspek-bars"></div>
+          <p class="mono" style="margin:14px 0 0">Satu ulasan bisa punya lebih dari satu aspek</p>
+        </div>
+        <div class="card">
+          <h4>Distribusi sentimen</h4>
+          <div class="stack" role="img" aria-label="Positif 9.675, netral 559, negatif 1.770">
+            <i style="width:80.60%;background:var(--accent)"></i>
+            <i style="width:4.66%;background:var(--mark)"></i>
+            <i style="width:14.75%;background:var(--bad)"></i>
+          </div>
+          <div class="legend">
+            <span style="--c:var(--accent)">Positif 9.675 (80,60%)</span>
+            <span style="--c:var(--mark)">Netral 559 (4,66%)</span>
+            <span style="--c:var(--bad)">Negatif 1.770 (14,75%)</span>
+          </div>
+          <p style="margin:18px 0 0;font-size:15px"><b>Temuan.</b> Aspek Performa dan Stabilitas punya proporsi sentimen negatif tertinggi, 46,22%. Aspek ini menjadi prioritas rekomendasi perbaikan bagi pengembang aplikasi.</p>
+        </div>
+      </div>
+
+      <div class="imgs">
+        <figure class="shot">
+          <img src="img/absa-sentimen-aspek.jpg" alt="Grafik batang bertumpuk distribusi sentimen per aspek" width="1200" height="591" loading="lazy">
+          <figcaption><b>Distribusi sentimen per aspek.</b> Tiap batang dipecah menjadi positif, netral, dan negatif.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/absa-confusion.jpg" alt="Confusion matrix klasifikasi sentimen pada data uji" width="834" height="724" loading="lazy">
+          <figcaption><b>Confusion matrix</b> pada data uji. Kelas netral paling sulit dikenali karena datanya paling sedikit.</figcaption>
+        </figure>
+      </div>
+      <figure class="shot" style="margin-top:24px">
+        <img src="img/absa-kerangka.jpg" alt="Kerangka sistem penelitian: input, proses, dan output" width="752" height="454" loading="lazy">
+        <figcaption><b>Kerangka sistem penelitian.</b> Dari sumber data Play Store sampai hasil evaluasi dan word cloud per aspek.</figcaption>
+      </figure>
+    </article>
+
+    <!-- 4. Kicau Mania -->
+    <article class="project" id="kicau">
+      <div class="p-head">
+        <div>
+          <div class="tag-row"><span class="tag">Side project</span><span class="tag">Computer vision real-time</span></div>
+          <h3>Kicau Mania Detector</h3>
+          <p class="sub">Project iseng yang membaca gerakan tubuh lewat webcam. Saat pose tertentu terdeteksi, empat animasi kucing muncul di pojok layar dan lagu diputar.</p>
+          <div class="btns">
+            <a class="btn" href="https://github.com/elSonOfGod" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <dl class="spec">
+          <dt>Teknologi</dt><dd>Python, OpenCV, MediaPipe Pose, pygame</dd>
+          <dt>Pose</dt><dd>Satu tangan di dekat hidung, tangan lain ke depan</dd>
+          <dt>Detail</dt><dd>Latar putih video kucing dihapus lewat kode agar menyatu dengan kamera. Deteksi diberi smoothing berbasis hitungan frame supaya tidak berkedip.</dd>
+        </dl>
+      </div>
+      <div class="pair">
+        <figure class="shot">
+          <img src="img/kicau-standby.jpg" alt="Tampilan standby Kicau Mania Detector sebelum pose terdeteksi" width="1200" height="697" loading="lazy">
+          <figcaption><b>Standby.</b> Teks petunjuk pose tampil, penghitung frame menunjukkan on:0.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/kicau-aktif.jpg" alt="Kicau Mania Detector saat pose aktif dengan empat kucing di pojok layar" width="1400" height="820" loading="lazy">
+          <figcaption><b>Pose aktif.</b> Empat kucing muncul di empat pojok dan penghitung menunjukkan on:10.</figcaption>
+        </figure>
+      </div>
+    </article>
+  </section>
+
+  <section id="kemampuan">
+    <div class="sec-head">
+      <h2>Kemampuan yang ditunjukkan</h2>
+    </div>
+    <div class="skills">
+      <div class="skill"><h4>Pengembangan aplikasi web</h4><p>Analisis kebutuhan, perancangan, dan pengembangan dengan Laravel, MySQL, dan Bootstrap.</p></div>
+      <div class="skill"><h4>Pengujian dan dokumentasi</h4><p>Black box testing, uji di beberapa perangkat, dan dokumentasi proyek lengkap dengan bukti tangkapan layar.</p></div>
+      <div class="skill"><h4>Dashboard dan pelaporan</h4><p>Laporan inventori dengan filter tanggal, cetak laporan, dan grafik pergerakan stok.</p></div>
+      <div class="skill"><h4>Pengolahan dan analisis data</h4><p>Python, preprocessing teks, pelabelan, dan evaluasi model klasifikasi.</p></div>
+      <div class="skill"><h4>Sistem multi-role</h4><p>Autentikasi dan pembagian akses antara Admin dan Pimpinan.</p></div>
+      <div class="skill"><h4>Eksperimen computer vision</h4><p>Deteksi pose real-time dengan OpenCV dan MediaPipe.</p></div>
+    </div>
+    <div class="stack-tags">
+      <span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap 5</span><span class="tag">Blade</span><span class="tag">Chart.js</span><span class="tag">Python</span><span class="tag">IndoBERT</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">pygame</span>
+    </div>
+  </section>
+
+  <section id="kontak" class="contact" style="padding-top:44px">
+    <span class="mono">Kontak</span>
+    <h2 style="margin-top:12px">Ada pekerjaan atau kolaborasi? Hubungi saya.</h2>
+    <div class="clist">
+      <div class="crow"><span class="mono">Email</span><span class="v" id="c-email">mikaelputrawan11@gmail.com</span><button type="button" data-copy="c-email">Salin</button></div>
+      <div class="crow"><span class="mono">LinkedIn</span><a class="v" href="https://linkedin.com/in/mikaelputrawansitumorang-a05a9027a" target="_blank" rel="noopener" id="c-li">linkedin.com/in/mikaelputrawansitumorang-a05a9027a</a><button type="button" data-copy="c-li">Salin</button></div>
+      <div class="crow"><span class="mono">GitHub</span><a class="v" href="https://github.com/elSonOfGod" target="_blank" rel="noopener" id="c-gh">github.com/elSonOfGod</a><button type="button" data-copy="c-gh">Salin</button></div>
+    </div>
+  </section>
+
+  <footer>Mikael Putrawan Situmorang · Lulusan Sistem Informasi, Universitas Gunadarma</footer>
+</div>
+
+<script>
+(function () {
+  var shots = [
+    { k: 'Dashboard', img: 'jwp-dashboard', w: 1200, h: 874, t: 'Dashboard.', d: 'Ringkasan total barang dan kategori, grafik pergerakan stok, 5 stok tertinggi, peringatan stok kritis, dan transaksi terbaru.' },
+    { k: 'Kategori', img: 'jwp-kategori', w: 1200, h: 727, t: 'Kategori barang.', d: '10 kategori dengan jumlah barang masing-masing. Tersedia aksi detail, edit, dan hapus.' },
+    { k: 'Daftar barang', img: 'jwp-barang', w: 1100, h: 1191, t: 'Daftar barang.', d: '22 barang lengkap dengan SKU, satuan, stok, harga, dan status stok: Aman, Rendah, atau Kritis.' },
+    { k: 'Barang masuk', img: 'jwp-masuk', w: 1200, h: 950, t: 'Barang masuk.', d: 'Riwayat transaksi masuk. Setelah transaksi disimpan, muncul notifikasi dan stok bertambah otomatis (di sini +200 Kg).' },
+    { k: 'Stok tidak cukup', img: 'jwp-error', w: 1200, h: 659, t: 'Validasi barang keluar.', d: 'Transaksi 100 Karung ditolak karena stok tersedia hanya 80 Karung. Pesan error muncul dan data form tetap terisi.' },
+    { k: 'Laporan', img: 'jwp-laporan', w: 1200, h: 1243, t: 'Laporan transaksi.', d: 'Seluruh transaksi masuk dan keluar dengan filter tanggal awal, tanggal akhir, dan jenis transaksi.' },
+    { k: 'Cetak laporan', img: 'jwp-cetak', w: 1200, h: 629, t: 'Tampilan cetak.', d: 'Laporan hasil filter dalam format siap cetak.' },
+    { k: 'Sisi Pimpinan', img: 'jwp-pimpinan', w: 1200, h: 913, t: 'Dashboard Pimpinan.', d: 'Menu hanya Dashboard dan Laporan Transaksi. Master Data dan Transaksi tidak tampil.' }
+  ];
+  var tabs = document.getElementById('gtabs'), img = document.getElementById('gimg'), cap = document.getElementById('gcap');
+  var wrap = img.parentNode;
+  shots.forEach(function (s, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role', 'tab'); b.textContent = s.k;
+    b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(tabs.children, function (x) { x.setAttribute('aria-selected', 'false'); });
+      b.setAttribute('aria-selected', 'true');
+      img.src = 'img/' + s.img + '.jpg'; img.width = s.w; img.height = s.h;
+      img.alt = s.t + ' ' + s.d;
+      wrap.scrollTop = 0;
+      cap.innerHTML = '<b>' + s.t + '</b> ' + s.d;
+    });
+    tabs.appendChild(b);
+  });
+
+  var aspek = [
+    ['Umum', 5273], ['Kualitas Jawaban', 4067], ['Fitur dan Fungsionalitas', 3042],
+    ['Performa dan Stabilitas', 1244], ['Harga dan Berlangganan', 855], ['UI/UX', 275]
+  ];
+  var max = 5273, box = document.getElementById('aspek-bars');
+  aspek.forEach(function (a) {
+    var r = document.createElement('div');
+    r.className = 'bar-row' + (a[0] === 'Performa dan Stabilitas' ? ' sel' : '');
+    r.innerHTML = '<span>' + a[0] + '</span><div class="track"><div class="fill" style="width:' + (a[1] / max * 100).toFixed(1) + '%"></div></div><span class="n">' + a[1].toLocaleString('id-ID') + '</span>';
+    box.appendChild(r);
+  });
+
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      var txt = el.textContent.trim();
+      var done = function () { btn.textContent = 'Tersalin'; setTimeout(function () { btn.textContent = 'Salin'; }, 1600); };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Pilih lalu salin';
+      };
+      try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
